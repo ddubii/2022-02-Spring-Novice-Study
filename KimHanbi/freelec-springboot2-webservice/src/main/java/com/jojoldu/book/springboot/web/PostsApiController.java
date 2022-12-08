@@ -1,11 +1,11 @@
 package com.jojoldu.book.springboot.web;
 
+import com.jojoldu.book.springboot.config.auth.LoginUser;
+import com.jojoldu.book.springboot.domain.user.User;
 import com.jojoldu.book.springboot.service.posts.PostsService;
-import com.jojoldu.book.springboot.web.dto.PostsListResponseDto;
-import com.jojoldu.book.springboot.web.dto.PostsResponseDto;
-import com.jojoldu.book.springboot.web.dto.PostsSaveRequestDto;
-import com.jojoldu.book.springboot.web.dto.PostsUpdateRequestDto;
+import com.jojoldu.book.springboot.web.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 public class PostsApiController {
     private final PostsService postsService;
-
+    PostsUpdateRequestDto requestDto;
     @PostMapping
     public Long save(@RequestBody PostsSaveRequestDto requestDto){
         return postsService.save(requestDto);
@@ -37,4 +37,5 @@ public class PostsApiController {
         postsService.delete(id);
         return id;
     }
+
 }
